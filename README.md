@@ -1,1 +1,1 @@
-# SpringData
+A project for Spring Data different approach

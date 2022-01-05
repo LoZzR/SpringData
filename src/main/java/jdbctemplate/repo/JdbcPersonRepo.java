@@ -54,7 +54,7 @@ public class JdbcPersonRepo implements IPersonRepo {
             person.setFirstName(firstname);
             person.setLastName(lastname);
             person.setPassword(password);
-            person.setHiringDate(DateProcessor.toDate(hiringDate));
+            if (hiringDate!= null && !"".equals(hiringDate)) person.setHiringDate(DateProcessor.toDate(hiringDate));
             return person;
         }
     }

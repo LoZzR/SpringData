@@ -90,7 +90,7 @@ public class Person implements Cloneable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, hiringDate.toLocalDate());
+        return Objects.hash(super.hashCode(), firstName, lastName, hiringDate == null ? "" : hiringDate.toString());
     }
 
     @Override

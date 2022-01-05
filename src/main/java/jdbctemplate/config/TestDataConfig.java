@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import java.sql.Driver;
 
 @Configuration
+//@ComponentScan(basePackages = {"jdbctemplate"})
 @PropertySource("classpath:db/db.properties")
 public class TestDataConfig {
 
@@ -76,16 +77,18 @@ public class TestDataConfig {
         return new CleanUp(userJdbcTemplate());
     }
 
-}
 
-class CleanUp {
-    private JdbcTemplate jdbcTemplate;
 
-    CleanUp(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    class CleanUp {
+        private JdbcTemplate jdbcTemplate;
+
+        CleanUp(JdbcTemplate jdbcTemplate) {
+            this.jdbcTemplate = jdbcTemplate;
+        }
+
+        private void destroy() {
+            jdbcTemplate.execute("DROP ALL OBJECTS DELETE FILES;");
+        }
     }
 
-    private void destroy() {
-        jdbcTemplate.execute("DROP ALL OBJECTS DELETE FILES;");
-    }
 }

@@ -1,10 +1,12 @@
 package jdbctemplate;
 
+import entities.Person;
 import jdbctemplate.config.TestDataConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import repo.IPersonRepo;
 
 import javax.sql.DataSource;
 
@@ -18,8 +20,8 @@ public class Driver {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(TestDataConfig.class);
 
 
-       for(String bean: ctx.getBeanDefinitionNames()){
-           logger.info("========================> {}", bean);
-       }
+        IPersonRepo personRepo = (IPersonRepo) ctx.getBean("jdbcPersonRepo");
+
+        personRepo.findAll().forEach(p -> logger.info(p.getUsername()));
     }
 }

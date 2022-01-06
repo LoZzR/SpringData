@@ -8,5 +8,6 @@ import java.util.*;
 public interface IPersonRepo {
     Optional<Person> findById(Long id);
     Set<Person> findAll();
+    default void htmlAllByName(String name) {}
 
 }

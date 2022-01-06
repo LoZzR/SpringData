@@ -17,7 +17,7 @@ import java.util.Set;
 public class JdbcPersonRepo implements IPersonRepo {
 
     private RowMapper<Person> rowMapper = new PersonRowMapper();
-    private JdbcTemplate jdbcTemplate;
+    protected JdbcTemplate jdbcTemplate;
 
     public JdbcPersonRepo(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

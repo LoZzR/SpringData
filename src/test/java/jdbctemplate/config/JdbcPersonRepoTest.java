@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import repo.IPersonRepo;
@@ -20,6 +21,7 @@ class JdbcPersonRepoTest {
     static final Long PERSON_ID = 1L;
 
     @Autowired
+    @Qualifier("extraJdbcPersonRepo")
     IPersonRepo personRepo;
     @BeforeEach
     void setUp(){
@@ -43,5 +45,9 @@ class JdbcPersonRepoTest {
         Set<Person> personSet = personRepo.findAll();
         assertNotNull(personSet);
         assertEquals(4, personSet.size());
+    }
+    @Test
+    void htmlAllByName(){
+        personRepo.htmlAllByName("John");
     }
 }

@@ -21,7 +21,7 @@ class JdbcPersonRepoTest {
     static final Long PERSON_ID = 1L;
 
     @Autowired
-    @Qualifier("extraJdbcPersonRepo")
+    //@Qualifier("extraJdbcPersonRepo")
     IPersonRepo personRepo;
     @BeforeEach
     void setUp(){

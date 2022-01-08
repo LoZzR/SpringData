@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Repository
+//@Repository
 public class ExtraJdbcPersonRepo extends JdbcPersonRepo {
 
     public ExtraJdbcPersonRepo(JdbcTemplate jdbcTemplate) {

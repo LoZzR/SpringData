@@ -21,8 +21,8 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = {"services"})
 public class TestTransactionalDbConfig implements TransactionManagementConfigurer {
 
-    @Autowired
-    private DataSource dataSource;
+    /*@Autowired
+    private DataSource dataSource;*/
 
     @Bean
     public PlatformTransactionManager txManager(){
@@ -30,11 +30,11 @@ public class TestTransactionalDbConfig implements TransactionManagementConfigure
     }
     @Bean
     public PlatformTransactionManager simpleManager(){
-        return new DataSourceTransactionManager(dataSource);
+        return new DataSourceTransactionManager(dataSource());
     }
     @Bean
     public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource);
+        return new JdbcTemplate(dataSource());
     }
     @Bean
     public DataSource dataSource() {

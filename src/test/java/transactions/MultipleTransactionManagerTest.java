@@ -1,6 +1,7 @@
 package transactions;
 
 import config.TestTransactionalDbConfig;
+import entities.Person;
 import jdbctemplate.config.JdbcConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +15,7 @@ import services.IPersonService;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,17 +29,16 @@ public class MultipleTransactionManagerTest {
     @Autowired
     IPersonService personService;
 
-    @Autowired
-    ApplicationContext ctx;
-
     @Test
     void testFindByIdWithTwoTms() {
-        DataSource sd = (DataSource) ctx.getBean(DataSource.class) ;
-       assertEquals("John", personService.findById(1L).getFirstName());
+        Person person = personService.findById(1L);
+        assertEquals("John", person.getUsername());
     }
 
+
     @Test
-    void testBeanTestExist(){
-        assertNotNull(ctx.getBean(config.Test.class));
+    void testFindAll() {
+        Set<Person> persons = personService.findAll();
+        assertEquals(4, persons.size());
     }
 }

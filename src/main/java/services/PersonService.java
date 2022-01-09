@@ -26,6 +26,6 @@ public class PersonService implements IPersonService{
 
     @Override
     public Set<Person> findAll() {
-        return null;
+        return personRepo.findAll();
     }
 }

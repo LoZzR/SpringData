@@ -10,6 +10,7 @@ import util.DateProcessor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -30,11 +31,16 @@ public class JdbcPersonRepo implements IPersonRepo {
     }
 
     @Override
-    public Optional<Person> addPerson(Person person) {
-        var sql ="select ID from PERSON desc";
-        Long maxId = jdbcTemplate.queryForObject(sql, rowMapper);
-        var sqlInsert = "INSERT INTO PERSON VALUES(?,?,?,?,?,?)";
-        return Optional.empty();
+    public void addPerson(Person person) {
+        var sqlInsert = "insert into PERSON(ID, USERNAME, FIRSTNAME, LASTNAME,PASSWORD,HIRINGDATE) values(?,?,?,?,?,?)";
+        jdbcTemplate.update(sqlInsert,person.getId(), person.getUsername(), person.getFirstName(), person.getLastName(),
+        person.getPassword(), person.getHiringDate());
+    }
+
+    @Override
+    public Long getNextId() {
+        var sql ="select max(ID) from PERSON";
+        return jdbcTemplate.queryForObject(sql, Long.class) + 1;
     }
 
     @Override

@@ -21,6 +21,14 @@ public class Person implements Cloneable {
         super();
     }
 
+    public Person(String username, String firstName, String lastName, String password, LocalDateTime hiringDate) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.hiringDate = hiringDate;
+    }
+
     public Long getId() {
         return id;
     }

@@ -28,6 +28,15 @@ public class JdbcPersonRepo implements IPersonRepo {
         return Optional.of(jdbcTemplate.queryForObject(sql,
                 rowMapper, id));
     }
+
+    @Override
+    public Optional<Person> addPerson(Person person) {
+        var sql ="select ID from PERSON desc";
+        Long maxId = jdbcTemplate.queryForObject(sql, rowMapper);
+        var sqlInsert = "INSERT INTO PERSON VALUES(?,?,?,?,?,?)";
+        return Optional.empty();
+    }
+
     @Override
     public Set<Person> findAll() {
         var sql = "select ID, USERNAME, FIRSTNAME, LASTNAME,PASSWORD,HIRINGDATE from PERSON";

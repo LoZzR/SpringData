@@ -1,7 +1,7 @@
 package repo;
 
 
-import entities.Person;
+import jdbctemplate.entities.Person;
 
 import java.util.*;
 

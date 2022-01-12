@@ -1,7 +1,7 @@
 package jdbctemplate.repo;
 
-import entities.Detective;
-import entities.Person;
+import jdbctemplate.entities.Detective;
+import jdbctemplate.entities.Person;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;

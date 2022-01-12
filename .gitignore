@@ -2,3 +2,5 @@
 SpringData.iml
 target/
 git_intellij_token
+src/main/resources/logback.xml
+src/test/resources/logback-test.xml

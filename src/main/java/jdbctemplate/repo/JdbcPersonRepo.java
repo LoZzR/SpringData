@@ -1,6 +1,6 @@
 package jdbctemplate.repo;
 
-import entities.Person;
+import jdbctemplate.entities.Person;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -10,7 +10,6 @@ import util.DateProcessor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 

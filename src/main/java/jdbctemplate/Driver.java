@@ -1,14 +1,12 @@
 package jdbctemplate;
 
-import entities.Person;
+import jdbctemplate.entities.Person;
 import jdbctemplate.config.TestDataConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import repo.IPersonRepo;
-
-import javax.sql.DataSource;
 
 public class Driver {
 

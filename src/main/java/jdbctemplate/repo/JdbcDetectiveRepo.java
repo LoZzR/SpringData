@@ -1,7 +1,7 @@
 package jdbctemplate.repo;
 
-import entities.Detective;
-import entities.Person;
+import jdbctemplate.entities.Detective;
+import jdbctemplate.entities.Person;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,6 @@ import util.EmploymentStatus;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
-import java.util.Set;
 
 @Repository
 public class JdbcDetectiveRepo implements IDetectiveRepo {

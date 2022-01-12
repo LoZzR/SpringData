@@ -1,6 +1,6 @@
 package services;
 
-import entities.Person;
+import jdbctemplate.entities.Person;
 import java.util.Set;
 
 public interface IPersonService {

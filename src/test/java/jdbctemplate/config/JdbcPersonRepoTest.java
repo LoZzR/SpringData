@@ -1,13 +1,10 @@
 package jdbctemplate.config;
 
-import entities.Person;
-import jdbctemplate.config.JdbcConfig;
-import jdbctemplate.config.TestDataConfig;
+import jdbctemplate.entities.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import repo.IPersonRepo;

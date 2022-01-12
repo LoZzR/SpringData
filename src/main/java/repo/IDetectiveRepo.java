@@ -1,9 +1,8 @@
 package repo;
 
-import entities.Detective;
+import jdbctemplate.entities.Detective;
 
 import java.util.Optional;
-import java.util.Set;
 
 public interface IDetectiveRepo {
 

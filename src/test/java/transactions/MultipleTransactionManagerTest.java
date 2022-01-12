@@ -1,7 +1,7 @@
 package transactions;
 
 import config.TestTransactionalDbConfig;
-import entities.Person;
+import jdbctemplate.entities.Person;
 import jdbctemplate.config.JdbcConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

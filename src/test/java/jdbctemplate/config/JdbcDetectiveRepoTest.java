@@ -1,8 +1,7 @@
 package jdbctemplate.config;
 
-import entities.Detective;
-import entities.Person;
-import jdbctemplate.Driver;
+import jdbctemplate.entities.Detective;
+import jdbctemplate.entities.Person;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.util.Assert;
 import repo.IDetectiveRepo;
 
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 

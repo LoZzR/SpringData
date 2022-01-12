@@ -1,6 +1,4 @@
-package entities;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package jdbctemplate.entities;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

@@ -1,36 +1,47 @@
-package jdbctemplate.entities;
+package hibernate.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import util.DateProcessor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Person implements Cloneable {
+@Entity
+public class Person extends AbstractEntity {
 
-    private Long id;
+    @NotNull
+    @Size(min = 3, max = 30)
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @NotNull
+    @Size(min = 3, max = 30)
+    @Column(nullable = false)
     private String firstName;
+
+    @NotNull
+    @Size(min = 3, max = 30)
+    @Column(nullable = false)
     private String lastName;
+
+    @NotNull
+    @Size(min = 4, max = 50)
+    @Column(nullable = false)
     private String password;
+
+    @NotNull
+    @DateTimeFormat(pattern = DateProcessor.DATE_FORMAT)
+    @Column(nullable = false)
     private LocalDateTime hiringDate;
+
+    @Transient
     private String newPassword;
 
     public Person() {
         super();
-    }
-
-    public Person(String username, String firstName, String lastName, String password, LocalDateTime hiringDate) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.hiringDate = hiringDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -94,13 +105,13 @@ public class Person implements Cloneable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, hiringDate == null ? "" : hiringDate.toString());
+        return Objects.hash(super.hashCode(), firstName, lastName, hiringDate.toLocalDate());
     }
 
     @Override
     public String toString() {
-        return String.format("Person[id='%s', username='%s', firstName='%s', lastName='%s', hiringDate='%s']\n",
-                id, username, firstName, lastName, hiringDate == null ? "" : hiringDate.toString());
+        return String.format("Person[username='%s', firstName='%s', lastName='%s', hiringDate='%s']\n",
+                username, firstName, lastName, hiringDate == null? "" : hiringDate.toString());
 
     }
 }

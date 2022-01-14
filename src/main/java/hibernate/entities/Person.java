@@ -12,29 +12,29 @@ import java.util.Objects;
 @Entity
 public class Person extends AbstractEntity {
 
-    @NotNull
-    @Size(min = 3, max = 30)
-    @Column(nullable = false, unique = true)
+    //@NotNull
+    //@Size(min = 3, max = 30)
+    @Column(nullable = true/*, unique = true*/)
     private String username;
 
-    @NotNull
+    //@NotNull
     @Size(min = 3, max = 30)
     @Column(nullable = false)
     private String firstName;
 
-    @NotNull
+    //@NotNull
     @Size(min = 3, max = 30)
     @Column(nullable = false)
     private String lastName;
 
-    @NotNull
+    //@NotNull
     @Size(min = 4, max = 50)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
-    @NotNull
+    //@NotNull
     @DateTimeFormat(pattern = DateProcessor.DATE_FORMAT)
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime hiringDate;
 
     @Transient

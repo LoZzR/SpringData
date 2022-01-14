@@ -30,10 +30,12 @@ public class JdbcPersonRepo implements IPersonRepo {
     }
 
     @Override
-    public void addPerson(Person person) {
+    public Person addPerson(Person person) {
         var sqlInsert = "insert into PERSON(ID, USERNAME, FIRSTNAME, LASTNAME,PASSWORD,HIRINGDATE) values(?,?,?,?,?,?)";
         jdbcTemplate.update(sqlInsert,person.getId(), person.getUsername(), person.getFirstName(), person.getLastName(),
         person.getPassword(), person.getHiringDate());
+
+        return person;
     }
 
     @Override

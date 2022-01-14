@@ -1,9 +1,10 @@
-package repo;
+package hibernate.repo;
 
 
-import jdbctemplate.entities.Person;
+import hibernate.entities.Person;
 
-import java.util.*;
+import java.util.Optional;
+import java.util.Set;
 
 public interface IPersonRepo {
     Optional<Person> findById(Long id);

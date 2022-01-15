@@ -31,12 +31,15 @@ public class HibernatePersonRepo implements IPersonRepo {
     @Override
     public Optional<Person> findById(Long id) {
         Person p = session().find(Person.class, id);
-        return Optional.empty();
+        return p != null ? Optional.of(p) : Optional.empty();
     }
 
     @Override
     public Person addPerson(Person person) {
-        return (Person) session().save(person);
+
+        return this.findById((Long)session().save(person)).orElseThrow(
+                ()->new RuntimeException("Error while adding person !")
+        );
     }
 
     @Override

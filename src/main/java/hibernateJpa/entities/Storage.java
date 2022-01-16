@@ -1,4 +1,4 @@
-package hibernate.entities;
+package hibernateJpa.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

@@ -1,4 +1,4 @@
-package hibernate.entities;
+package hibernateJpa.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

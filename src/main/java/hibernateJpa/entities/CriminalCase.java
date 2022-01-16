@@ -1,4 +1,4 @@
-package hibernate.entities;
+package hibernateJpa.entities;
 import util.CaseStatus;
 import util.CaseType;
 

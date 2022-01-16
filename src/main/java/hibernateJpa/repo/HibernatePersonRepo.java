@@ -1,16 +1,13 @@
-package hibernate.repo;
+package hibernateJpa.repo;
 
-import hibernate.entities.Person;
+import hibernateJpa.entities.Person;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-import hibernate.repo.IPersonRepo;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -30,14 +27,16 @@ public class HibernatePersonRepo implements IPersonRepo {
 
     @Override
     public Optional<Person> findById(Long id) {
+        if(true) throw new RuntimeException();
         Person p = session().find(Person.class, id);
         return p != null ? Optional.of(p) : Optional.empty();
     }
 
     @Override
     public Person addPerson(Person person) {
-
-        return this.findById((Long)session().save(person)).orElseThrow(
+        Long id = (Long)session().save(person);
+        findAll();
+        return this.findById(id).orElseThrow(
                 ()->new RuntimeException("Error while adding person !")
         );
     }

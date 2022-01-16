@@ -1,14 +1,14 @@
-package hibernate;
+package hibernateJpa;
 
 
-import hibernate.config.HibernateConfig;
-import hibernate.entities.Person;
+import hibernateJpa.config.HibernateConfig;
+import hibernateJpa.entities.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.transaction.annotation.Transactional;
-import hibernate.repo.IPersonRepo;
+import hibernateJpa.repo.IPersonRepo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,7 +36,8 @@ public class HibernatePersonRepoTest {
         Person p = new Person();
         p.setFirstName("Soufiane");
         p.setLastName("Ounida");
-        assertNotNull(personRepo.addPerson(p));
+        //assertNotNull(personRepo.addPerson(p));
+        assertThrows(RuntimeException.class,()->personRepo.addPerson(p));
         //assertEquals(1, personRepo.findAll().size());
     }
 }

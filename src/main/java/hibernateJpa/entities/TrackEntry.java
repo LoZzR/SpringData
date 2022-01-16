@@ -1,4 +1,4 @@
-package hibernate.entities;
+package hibernateJpa.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import util.DateProcessor;

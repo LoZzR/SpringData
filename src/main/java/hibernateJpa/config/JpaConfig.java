@@ -65,7 +65,8 @@ public class JpaConfig {
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean =
                 new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.cems.dao");factoryBean.setDataSource(dataSource());
+        factoryBean.setPackagesToScan("hibernateJpa.entities");
+        factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(new
                 HibernateJpaVendorAdapter());
         factoryBean.setJpaProperties(hibernateProperties());

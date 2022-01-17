@@ -5,11 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -32,7 +34,9 @@ public class JpaPersonRepo implements IPersonRepo{
 
     @Override
     public Person addPerson(Person person) {
-        return null;
+        entityManager.persist(person);
+        Set<Person> persons = this.findAll();
+        return person;
     }
 
     @Override
@@ -42,7 +46,9 @@ public class JpaPersonRepo implements IPersonRepo{
 
     @Override
     public Set<Person> findAll() {
-        return null;
+        String sql = "from Person p";
+        Query query = entityManager.createQuery(sql);
+        return new HashSet<>(query.getResultList());
     }
 
     @Override

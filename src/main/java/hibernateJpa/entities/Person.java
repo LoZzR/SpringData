@@ -112,7 +112,7 @@ public class Person extends AbstractEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), firstName, lastName, hiringDate.toLocalDate());
+        return Objects.hash(super.hashCode(), firstName, lastName);
     }
 
     @Override

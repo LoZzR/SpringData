@@ -1,6 +1,8 @@
 package services;
 
 import jdbctemplate.entities.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +12,8 @@ import java.util.Set;
 
 @Service
 public class PersonService implements IPersonService{
+
+    public static Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
     private IPersonRepo personRepo;
@@ -38,6 +42,14 @@ public class PersonService implements IPersonService{
     @Override
     public Set<Person> findAll() {
         return personRepo.findAll();
+/*
+        try {
+            throw new RuntimeException("FAAAAAAAIIIIIIILED");
+        }
+        catch (Exception e){
+            logger.error("Error while calling findAll()");
+            return null;
+        }*/
     }
 
 

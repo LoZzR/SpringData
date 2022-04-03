@@ -46,7 +46,7 @@ public class TestDataConfig {
             dataSource.setUsername(username);
             dataSource.setPassword(password);
 
-            DatabasePopulatorUtils.execute(databasePopulator(), dataSource);
+            //DatabasePopulatorUtils.execute(databasePopulator(), dataSource);
             return dataSource;
         } catch (Exception e) {
             logger.info("=============================>> Exception {}", e);
@@ -54,7 +54,7 @@ public class TestDataConfig {
         }
     }
 
-    @Value("classpath:db/schema.sql")
+    /*@Value("classpath:db/schema.sql")
     private Resource schemaScript;
 
     @Value("classpath:db/test-data.sql")
@@ -65,9 +65,9 @@ public class TestDataConfig {
         populator.addScript(schemaScript);
         populator.addScript(dataScript);
         return populator;
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public JdbcTemplate userJdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
@@ -89,6 +89,6 @@ public class TestDataConfig {
         private void destroy() {
             jdbcTemplate.execute("DROP ALL OBJECTS DELETE FILES;");
         }
-    }
+    }*/
 
 }

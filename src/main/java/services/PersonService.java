@@ -21,7 +21,7 @@ public class PersonService implements IPersonService{
     @Transactional(transactionManager = "simpleManager", readOnly = true)
     @Override
     public Person findById(Long id) {
-        if(id%2 == 1) throw new RuntimeException(String.format("id %s not allowed !", id));
+        //if(id%2 == 1) throw new RuntimeException(String.format("id %s not allowed !", id));
         return personRepo.findById(id).orElseThrow(()->new RuntimeException(String.format("Person with id : %s not found !",id)));
     }
 

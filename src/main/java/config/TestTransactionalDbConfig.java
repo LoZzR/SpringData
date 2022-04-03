@@ -1,10 +1,8 @@
 package config;
 
+import jdbctemplate.config.TestDataConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
@@ -20,25 +18,26 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @Configuration
 @ComponentScan(basePackages = {"services"})
+@Import(TestDataConfig.class)
 public class TestTransactionalDbConfig implements TransactionManagementConfigurer {
 
-    /*@Autowired
-    private DataSource dataSource;*/
+    @Autowired
+    private DataSource dataSource;
 
     @Primary
     @Bean
     public PlatformTransactionManager txManager(){
-        return new DataSourceTransactionManager(dataSource());
+        return new DataSourceTransactionManager(dataSource);
     }
     @Bean
     public PlatformTransactionManager simpleManager(){
-        return new DataSourceTransactionManager(dataSource());
+        return new DataSourceTransactionManager(dataSource);
     }
     @Bean
     public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource());
+        return new JdbcTemplate(dataSource);
     }
-    @Bean
+    /*@Bean
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder
@@ -48,7 +47,7 @@ public class TestTransactionalDbConfig implements TransactionManagementConfigure
                 .addScript("db/test-data.sql")
                 .build();
         return db;
-    }
+    }*/
     /* Setting the default transactionManager*/
     @Override
     public TransactionManager annotationDrivenTransactionManager() {

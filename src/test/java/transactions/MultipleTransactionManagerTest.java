@@ -1,6 +1,7 @@
 package transactions;
 
 import config.TestTransactionalDbConfig;
+import jdbctemplate.config.TestDataConfig;
 import jdbctemplate.entities.Person;
 import jdbctemplate.config.JdbcConfig;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {TestTransactionalDbConfig.class, JdbcConfig.class})
+@ContextConfiguration(classes = {JdbcConfig.class, TestTransactionalDbConfig.class})
 public class MultipleTransactionManagerTest {
 
     public static Logger logger = LoggerFactory.getLogger(MultipleTransactionManagerTest.class);

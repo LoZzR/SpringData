@@ -1,5 +1,6 @@
 package services;
 
+import exceptions.MailSendingException;
 import jdbctemplate.entities.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +32,11 @@ public class PersonService implements IPersonService{
 
     @Override
     @Transactional
-    public Person addNewPerson(Person person) {
+    public Person addNewPerson(Person person) throws MailSendingException{
         Long id = this.personRepo.getNextId();
         person.setId(id);
         this.personRepo.addPerson(person);
-        Set<Person> persons = this.findAll();
+        sendNotification();
         return this.findById(id);
     }
 
@@ -52,5 +53,8 @@ public class PersonService implements IPersonService{
         }*/
     }
 
+    private void sendNotification() throws MailSendingException {
+        throw new MailSendingException();
+    }
 
 }

@@ -43,6 +43,10 @@ public class MultipleTransactionManagerTest {
     }
 
     @Test
+    @Transactional
+    //@Rollback(false)
+    @Rollback
+    //@Commit
     void testAddNewPerson() throws MailSendingException {
         Person person = new Person("Zack10", "Zakariae", "EL HICHEM", "test123", DateProcessor.toDate("2021-03-01 08:00:00"));
         Person newPerson = personService.addNewPerson(person);

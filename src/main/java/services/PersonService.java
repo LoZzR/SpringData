@@ -31,7 +31,7 @@ public class PersonService implements IPersonService{
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = MailSendingException.class)
     public Person addNewPerson(Person person) throws MailSendingException{
         Long id = this.personRepo.getNextId();
         person.setId(id);
